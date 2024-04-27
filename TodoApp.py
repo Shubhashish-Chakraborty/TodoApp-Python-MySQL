@@ -1,7 +1,7 @@
 import mysql.connector as mysqlconnector
 import os
 import datetime
-
+import time
 
 print()
 print("Welcome to the Todo App, Made by Shubhashish Chakraborty!\n")
@@ -165,6 +165,8 @@ while True:
 
         elif (int(getChoice) == 5): #EXIT
 
+            print("Program closed successfully!")
+            time.sleep(1)
             break
 
         else:

@@ -55,14 +55,36 @@ def ShowTasks():
         print(list(task))
     print()
 
+
+def MarkComplete():
+
+    print()
+    print("< Select the Task Number to mark it as completed >")
+
+    ShowTasks()
+
+
+    taskAmtList = []
+
+    for num in range(1 , (myCursor.rowcount + 1)):
+
+        taskAmtList.append(num)
+
     
+
+    getTaskNumber = input(f"Select Task {taskAmtList} : ")
+
+
+    print()
+
+
 
 
 #MAIN_MENU_DRIVE
 
 while True:
 
-    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> EXIT\n"]
+    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> Mark Complete" , "4-> EXIT\n"]
 
 
 
@@ -76,7 +98,7 @@ while True:
         print(options[opt])
 
 
-    getChoice = input(f"Enter Your Choice {optList}:")
+    getChoice = input(f"Enter Your Choice {optList} : ")
 
 
 
@@ -91,7 +113,11 @@ while True:
             
             ShowTasks()
         
-        elif (int(getChoice) == 3): #EXIT
+        elif (int(getChoice) == 3):
+            
+            MarkComplete()
+
+        elif (int(getChoice) == 4): #EXIT
 
             break
 

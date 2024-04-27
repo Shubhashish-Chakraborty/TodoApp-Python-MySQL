@@ -3,8 +3,8 @@ import os
 import datetime
 
 
-
-print("Welcome to the Todo App, Made by Shubhashish Chakraborty!")
+print()
+print("Welcome to the Todo App, Made by Shubhashish Chakraborty!\n")
 
 myConnection = mysqlconnector.connect(
     host='localhost',
@@ -20,11 +20,12 @@ myCursor = myConnection.cursor()
 
 def AddTask():
 
+    print()
     TaskNumber = int(input("Enter Task Number:"))
     Task = input("Enter Task:")
-    TaskProgress = "---"
+    TaskProgress = "--pending--"
     TaskAddedDate = datetime.date.today()
-    ExpectedCompletionDate = "2024-07-14"
+    ExpectedCompletionDate = input("Enter Expected Completion Date[yyyy-MM-dd]:")
 
 
     query = "INSERT INTO tododata VALUES({} , '{}' , '{}' , '{}' , '{}')".format(TaskNumber,Task,TaskProgress,TaskAddedDate,ExpectedCompletionDate)
@@ -35,20 +36,24 @@ def AddTask():
     if (myCursor.rowcount) > 0:
 
         print("Data Added")
-        return True
+        # return True
     
 
 
 def ShowTasks():
 
 
+    print()
     query = "SELECT * FROM tododata"
     myCursor.execute(query)
     Tasks = myCursor.fetchall()
     
+    print(["Task_Number" , "Task" , "Task_Progress" , "Task_Added_Date" , "Expected_Completion_Date"])
+    print()
     for task in Tasks:
         
-        print(list(task),'\n') #can remove the gap if you want!
+        print(list(task))
+    print()
 
     
 
@@ -57,7 +62,7 @@ def ShowTasks():
 
 while True:
 
-    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> EXIT"]
+    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> EXIT\n"]
 
 
 

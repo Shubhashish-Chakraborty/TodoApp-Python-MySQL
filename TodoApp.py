@@ -56,6 +56,37 @@ def ShowTasks():
     print()
 
 
+def DeleteAllTask():
+
+    print()
+
+    while (True):
+
+        getPerm = input("Confirm Deleting All Tasks(y/n) : ")
+
+
+        if (getPerm.lower() == "y") or (getPerm.lower() == "yes"):
+
+            query = "DELETE FROM tododata"
+            myCursor.execute(query)
+            myConnection.commit()
+            print("All Tasks Deleted!!")
+            break
+               
+
+
+
+        elif (getPerm.lower() == "n" or (getPerm.lower() == "no")):
+
+            break
+        
+    print()
+
+
+
+
+
+
 def MarkComplete():
 
     print()
@@ -95,7 +126,7 @@ def MarkComplete():
 
 while True:
 
-    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> Mark Complete" , "4-> EXIT\n"]
+    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> Mark Complete" , "4-> Delete All Task" , "5-> EXIT\n"]
 
 
 
@@ -128,7 +159,11 @@ while True:
             
             MarkComplete()
 
-        elif (int(getChoice) == 4): #EXIT
+        elif (int(getChoice) == 4):
+
+            DeleteAllTask()
+
+        elif (int(getChoice) == 5): #EXIT
 
             break
 

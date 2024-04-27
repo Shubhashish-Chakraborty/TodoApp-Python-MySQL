@@ -53,4 +53,48 @@ def ShowTasks():
     
 
 
-ShowTasks()
+#MAIN_MENU_DRIVE
+
+while True:
+
+    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> EXIT"]
+
+
+
+
+    optList = []
+
+    for opt in range(len(options)):
+
+        to_append = opt + 1
+        optList.append(to_append)
+        print(options[opt])
+
+
+    getChoice = input(f"Enter Your Choice {optList}:")
+
+
+
+
+    if (getChoice.isdigit()):
+
+        if (int(getChoice) == 1):
+
+            AddTask()
+        
+        elif (int(getChoice) == 2):
+            
+            ShowTasks()
+        
+        elif (int(getChoice) == 3): #EXIT
+
+            break
+
+        else:
+
+            print("Invalid Input, Try Again!")
+
+
+    else:
+
+        print("Invalid Input, Try Again!")

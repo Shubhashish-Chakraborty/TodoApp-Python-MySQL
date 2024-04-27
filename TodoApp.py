@@ -72,7 +72,18 @@ def MarkComplete():
 
     
 
-    getTaskNumber = input(f"Select Task {taskAmtList} : ")
+    getTaskNumber = input(f"Select the Task to Mark Complete {taskAmtList} : ")
+
+
+    if (getTaskNumber.isdigit()):
+
+        query = "UPDATE tododata SET Task_Progress = '--Completed--' WHERE Task_Number = {}".format(getTaskNumber)
+
+        myCursor.execute(query)
+        myConnection.commit()
+        print("TASK MARKED COMPLETED!!")
+    else:
+        print("Invalid Input, Try Again!")
 
 
     print()

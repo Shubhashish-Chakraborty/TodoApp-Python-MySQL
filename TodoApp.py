@@ -21,11 +21,11 @@ myCursor = myConnection.cursor()
 def AddTask():
 
     print()
-    TaskNumber = int(input("Enter Task Number:"))
-    Task = input("Enter Task:")
+    TaskNumber = int(input("Enter Task Number : "))
+    Task = input("Enter Task : ")
     TaskProgress = "--pending--"
     TaskAddedDate = datetime.date.today()
-    ExpectedCompletionDate = input("Enter Expected Completion Date[yyyy-MM-dd]:")
+    ExpectedCompletionDate = input("Enter Expected Completion Date[yyyy-MM-dd] : ")
 
 
     query = "INSERT INTO tododata VALUES({} , '{}' , '{}' , '{}' , '{}')".format(TaskNumber,Task,TaskProgress,TaskAddedDate,ExpectedCompletionDate)
@@ -35,9 +35,10 @@ def AddTask():
 
     if (myCursor.rowcount) > 0:
 
-        print("Data Added")
+        print("Task Added !")
         # return True
     
+    print()
 
 
 def ShowTasks():
@@ -62,7 +63,7 @@ def DeleteAllTask():
 
     while (True):
 
-        getPerm = input("Confirm Deleting All Tasks(y/n) : ")
+        getPerm = input("CONFIRM DELETING ALL TASKS(y/n) : ")
 
 
         if (getPerm.lower() == "y") or (getPerm.lower() == "yes"):
@@ -112,9 +113,10 @@ def MarkComplete():
 
         myCursor.execute(query)
         myConnection.commit()
-        print("TASK MARKED COMPLETED!!")
+        print("TASK COMPLETED!!")
     else:
         print("Invalid Input, Try Again!")
+        print()
 
 
     print()
@@ -172,8 +174,10 @@ while True:
         else:
 
             print("Invalid Input, Try Again!")
+            print()
 
 
     else:
 
         print("Invalid Input, Try Again!")
+        print()

@@ -97,10 +97,11 @@ def MarkComplete():
 
     print()
     os.system("cls")
-    print("< Select the Task Number to mark it as completed >")
 
     ShowTasks()
 
+    print("< Select the Task Number to mark it as completed >")
+    print()
 
     taskAmtList = []
 
@@ -127,6 +128,39 @@ def MarkComplete():
 
     print()
 
+def UpdateTask():
+
+    print()
+
+
+    ShowTasks()
+    print("< Select the Task Number to Update the Task >")
+    print()
+
+    taskAmtList = []
+
+    for num in range(1 , (myCursor.rowcount + 1)):
+
+        taskAmtList.append(num)
+
+    getTaskNumber = input(f"Select the Task to Update {taskAmtList} : ")
+    print()
+    
+    if (getTaskNumber.isdigit()):
+
+        getUpdation = input(f"UPDATE TASK {getTaskNumber} : ")
+
+        query = "UPDATE tododata SET Task = '{}' WHERE Task_Number = {}".format(getUpdation,getTaskNumber)
+
+        myCursor.execute(query)
+        myConnection.commit()
+        print("TASK UPDATED!!")
+    else:
+        print("Invalid Input, Try Again!")
+        print()
+
+
+    print()
 
 
 
@@ -134,7 +168,7 @@ def MarkComplete():
 
 while True:
 
-    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> Mark Complete" , "4-> Delete All Task" , "5-> EXIT\n"]
+    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> Mark Complete" , "4-> Delete All Task" , "5-> Update Task" , "6-> EXIT\n"]
 
 
 
@@ -171,7 +205,11 @@ while True:
 
             DeleteAllTask()
 
-        elif (int(getChoice) == 5): #EXIT
+        elif (int(getChoice) == 5):
+
+            UpdateTask()
+
+        elif (int(getChoice) == 6): #EXIT
 
             print("Program closed successfully!")
             time.sleep(1)
@@ -188,4 +226,3 @@ while True:
 
         os.system("cls")
         print("Invalid Input, Try Again!")
-        

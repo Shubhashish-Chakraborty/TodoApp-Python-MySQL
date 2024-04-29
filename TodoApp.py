@@ -4,8 +4,8 @@ import datetime
 import time
 
 print()
-print("Welcome to the Todo App, Made by Shubhashish Chakraborty!\n")
 os.system("cls")
+print("Welcome to the Todo App, Made by Shubhashish Chakraborty!\n")
 
 myConnection = mysqlconnector.connect(
     host='localhost',

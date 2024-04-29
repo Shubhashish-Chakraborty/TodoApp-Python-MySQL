@@ -5,6 +5,7 @@ import time
 
 print()
 print("Welcome to the Todo App, Made by Shubhashish Chakraborty!\n")
+os.system("cls")
 
 myConnection = mysqlconnector.connect(
     host='localhost',
@@ -36,8 +37,10 @@ def AddTask():
     if (myCursor.rowcount) > 0:
 
         print("Task Added !")
+        time.sleep(0.8)
         # return True
     
+    os.system("cls")
     print()
 
 
@@ -45,6 +48,7 @@ def ShowTasks():
 
 
     print()
+    os.system("cls")
     query = "SELECT * FROM tododata"
     myCursor.execute(query)
     Tasks = myCursor.fetchall()
@@ -60,6 +64,7 @@ def ShowTasks():
 def DeleteAllTask():
 
     print()
+    os.system("cls")
 
     while (True):
 
@@ -91,6 +96,7 @@ def DeleteAllTask():
 def MarkComplete():
 
     print()
+    os.system("cls")
     print("< Select the Task Number to mark it as completed >")
 
     ShowTasks()
@@ -173,11 +179,13 @@ while True:
 
         else:
 
+            os.system("cls")
             print("Invalid Input, Try Again!")
-            print()
+            
 
 
     else:
 
+        os.system("cls")
         print("Invalid Input, Try Again!")
-        print()
+        

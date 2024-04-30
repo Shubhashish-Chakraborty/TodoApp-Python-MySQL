@@ -5,7 +5,12 @@ import time
 
 print()
 os.system("cls")
-print("Welcome to the Todo App, Made by Shubhashish Chakraborty!\n")
+
+print("*"*57) # Selected the string, Looked how many characters is it holding and then replicated the stars
+
+print("Welcome to the Todo App, Made by Shubhashish Chakraborty!")
+
+print("*"*57 , '\n')
 
 myConnection = mysqlconnector.connect(
     host='localhost',
@@ -22,6 +27,13 @@ myCursor = myConnection.cursor()
 def AddTask():
 
     print()
+
+    print("*"*47)
+
+    print("< Give Valid Inputs and ADD Your Todo Tasks!! >")
+
+    print("*"*47 , '\n')
+
     TaskNumber = int(input("Enter Task Number : "))
     Task = input("Enter Task : ")
     TaskProgress = "--pending--"
@@ -57,8 +69,14 @@ def AddTask():
 def ShowTasks():
 
 
-    print()
     os.system("cls")
+
+    print("*"*23)
+
+    print("Here is All Your Tasks:")
+
+    print("*"*23 , '\n')
+
     query = "SELECT * FROM tododata"
     myCursor.execute(query)
     Tasks = myCursor.fetchall()
@@ -73,9 +91,15 @@ def ShowTasks():
 
 def DeleteAllTask():
 
-    print()
+
     os.system("cls")
 
+    print("*"*36)
+
+    print("WARNING: This Will Delete All Tasks!")
+
+    print("*"*36 , '\n')
+    
     while (True):
 
         getPerm = input("CONFIRM DELETING ALL TASKS(y/n) : ")
@@ -105,13 +129,15 @@ def DeleteAllTask():
 
 def MarkComplete():
 
-    print()
+    
     os.system("cls")
 
     ShowTasks()
+    print("*"*50)
 
     print("< Select the Task Number to mark it as completed >")
-    print()
+
+    print("*"*50 , '\n')
 
     taskAmtList = []
 
@@ -140,12 +166,15 @@ def MarkComplete():
 
 def UpdateTask():
 
-    print()
-
 
     ShowTasks()
+
+    print("*"*45)
+
     print("< Select the Task Number to Update the Task >")
-    print()
+    
+    print("*"*45 , '\n')
+    
 
     taskAmtList = []
 

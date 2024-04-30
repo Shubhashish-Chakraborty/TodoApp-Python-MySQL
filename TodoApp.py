@@ -26,8 +26,18 @@ def AddTask():
     Task = input("Enter Task : ")
     TaskProgress = "--pending--"
     TaskAddedDate = datetime.date.today()
-    ExpectedCompletionDate = input("Enter Expected Completion Date[yyyy-MM-dd] : ")
+    ExpectedCompletionDate = input("Enter Expected Completion Date[yyyy-MM-dd] [Enter to Skip] : ")
 
+
+    # Checking Condition to skip the ExpectedCompletionDate
+
+    if (ExpectedCompletionDate == ""):
+
+        ExpectedCompletionDate = datetime.date.today()
+    
+    else:
+        pass
+    
 
     query = "INSERT INTO tododata VALUES({} , '{}' , '{}' , '{}' , '{}')".format(TaskNumber,Task,TaskProgress,TaskAddedDate,ExpectedCompletionDate)
 
@@ -213,6 +223,7 @@ while True:
 
             print("Program closed successfully!")
             time.sleep(1)
+            os.system('cls')
             break
 
         else:

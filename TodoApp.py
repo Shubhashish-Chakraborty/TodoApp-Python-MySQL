@@ -124,9 +124,6 @@ def DeleteAllTask():
 
 
 
-
-
-
 def MarkComplete():
 
     
@@ -203,11 +200,44 @@ def UpdateTask():
 
 
 
+def RemoveCompletedTask():
+
+    os.system("cls")
+
+    print("*"*72)
+
+    print("< WARNING: This will Remove All the Completed Tasks From you Todo List >")
+
+    print("*"*72 , '\n')
+
+    while (True):
+
+        getPerm = input("CONFIRM REMOVING ALL THE COMPLETED TASKS(y/n) : ")
+
+
+        if (getPerm.lower() == "y") or (getPerm.lower() == "yes"):
+
+            query = "DELETE FROM tododata WHERE Task_Progress = '--Completed--'"
+            myCursor.execute(query)
+            myConnection.commit()
+            print("Completed Tasks Deleted!!")
+            break
+               
+
+
+
+        elif (getPerm.lower() == "n" or (getPerm.lower() == "no")):
+
+            break
+        
+    print()
+
+
 #MAIN_MENU_DRIVE
 
 while True:
 
-    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> Mark Complete" , "4-> Delete All Task" , "5-> Update Task" , "6-> EXIT\n"]
+    options = ["1-> Add Task" , "2-> Show Tasks" , "3-> Mark Complete" , "4-> Delete All Task" , "5-> Update Task" , "6-> Remove Completed Tasks" , "7-> EXIT\n"]
 
 
 
@@ -248,7 +278,11 @@ while True:
 
             UpdateTask()
 
-        elif (int(getChoice) == 6): #EXIT
+        elif (int(getChoice) == 6):
+            
+            RemoveCompletedTask()
+
+        elif (int(getChoice) == 7): #EXIT
 
             print("Program closed successfully!")
             time.sleep(1)

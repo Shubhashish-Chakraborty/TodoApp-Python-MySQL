@@ -8,6 +8,13 @@ import time
 
 MySQLPasswd = input("Enter your MySQL password: ")
 
+if (MySQLPasswd == ""): #Default Password for MySQL
+
+    MySQLPasswd = "root"
+
+else:
+    pass
+
 print()
 os.system("cls")
 
@@ -141,15 +148,28 @@ def MarkComplete():
 
     print("*"*50 , '\n')
 
-    taskAmtList = []
-
-    for num in range(1 , (myCursor.rowcount + 1)):
-
-        taskAmtList.append(num)
-
+    # taskAmtList = []
     
+    # for num in range(1 , (myCursor.rowcount + 1)):
 
-    getTaskNumber = input(f"Select the Task to Mark Complete {taskAmtList} : ")
+    #     taskAmtList.append(num)
+
+    NumQuery = "SELECT Task_Number FROM tododata"
+    myCursor.execute(NumQuery)
+    NumData = myCursor.fetchall()
+
+    TaskNumList = []
+
+
+    for lstNum in range(len(NumData)): #Example: [[1] , [2 , [3] ...]
+
+        # print(list(NumData[lstNum])) --> [1] [2] [34] [45] [63] => list(NumData[lstNum])[0] => 1 , 2 , 34 ...
+
+        TaskNumList.append(list(NumData[lstNum])[0])
+
+
+
+    getTaskNumber = input(f"Select the Task to Mark Complete {TaskNumList} : ")
 
 
     if (getTaskNumber.isdigit()):
@@ -178,13 +198,26 @@ def UpdateTask():
     print("*"*45 , '\n')
     
 
-    taskAmtList = []
+    # taskAmtList = []
 
-    for num in range(1 , (myCursor.rowcount + 1)):
+    # for num in range(1 , (myCursor.rowcount + 1)):
 
-        taskAmtList.append(num)
+    #     taskAmtList.append(num)
 
-    getTaskNumber = input(f"Select the Task to Update {taskAmtList} : ")
+    NumQuery = "SELECT Task_Number FROM tododata"
+    myCursor.execute(NumQuery)
+    NumData = myCursor.fetchall()
+
+    TaskNumList = []
+
+    for lstNum in range(len(NumData)): #Example: [[1] , [2 , [3] ...]
+
+        # print(list(NumData[lstNum])) --> [1] [2] [34] [45] [63] => list(NumData[lstNum])[0] => 1 , 2 , 34 ...
+
+        TaskNumList.append(list(NumData[lstNum])[0])
+
+
+    getTaskNumber = input(f"Select the Task to Update {TaskNumList} : ")
     print()
     
     if (getTaskNumber.isdigit()):

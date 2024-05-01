@@ -3,6 +3,11 @@ import os
 import datetime
 import time
 
+
+# Asking For Database Details:
+
+MySQLPasswd = input("Enter your MySQL password: ")
+
 print()
 os.system("cls")
 
@@ -13,10 +18,10 @@ print("Welcome to the Todo App, Made by Shubhashish Chakraborty!")
 print("*"*57 , '\n')
 
 myConnection = mysqlconnector.connect(
-    host='localhost',
-    user='root',
-    passwd='root',#Ask for all These Later
-    database='mytodo'
+    host = 'localhost',
+    user = 'root',
+    passwd = MySQLPasswd,
+    database = 'mytodo'
 )
 
 myCursor = myConnection.cursor()

@@ -27,4 +27,3 @@ Copy the MySQL table creation code from the below provided link to create the ta
 <hr>
 
 # IMP NOTE: Make sure in the python code you give the proper name for your Database and Table!!
-

@@ -20,9 +20,17 @@ USE mytodo;
 ### Step 2: Create a table for the Todo Application, Give any name to it as you want, Im naming it as `tododata`
 
 
-> Copy the MySQL table creation code from the below provided link to create the table (tododata):
+### MySQL table creation code to create the table (tododata):
 
-[Code for Table](https://drive.google.com/file/d/1Q90A6AlFN93aFW2DH9L2kVpWKopFva2H/view?usp=sharing "GoogleDriveLink")
+```
+CREATE TABLE tododata (
+    Task_Number INT PRIMARY KEY,
+    Task VARCHAR(255) NOT NULL,
+    Task_Progress VARCHAR(50),
+    Task_Added_Date DATE,
+    Expected_Completion_Date DATE
+);
+```
 
 
 > IMP NOTE: Make sure in the python code you give the proper name for your Database and Table!!
